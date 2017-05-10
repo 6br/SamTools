@@ -43,7 +43,7 @@ open filename = do
   when (bhdr == nullPtr) $ ioError . userError $
     "Error reading header from BAM file " ++ show filename
   bamInitHeaderHash bhdr
-  addMVarFinalizer mv (finalizeBamIndex mv)
+  mkWeakMVar mv (finalizeBamIndex mv)
   hdr <- liftM Header . newForeignPtr bamHeaderDestroyPtr $ bhdr
   return $ IdxHandle { idxFilename = filename
                      , bamindex = mv
@@ -72,7 +72,7 @@ query inh tid (start, end) = withMVar (bamindex inh) $ \(_f, idx) -> do
   when (it == nullPtr) $ ioError . userError
     $ "Error starting BAM query: " ++ show (idxFilename inh, (tid, (start, end)))
   mv <- newMVar it
-  addMVarFinalizer mv (finalizeBamIter mv)
+  mkWeakMVar mv (finalizeBamIter mv)
   return $ Query { qyHandle = inh, iter = mv }
   
 finalizeBamIter :: MVar (Ptr BamIterInt) -> IO ()

@@ -29,6 +29,6 @@ flag Examples
 executable samtools-conduit-copy
   main-is:             SamtoolsConduitCopy.hs
   other-modules:       Bio.SamTools.Conduit
-  build-depends:       base ==4.6.*, bytestring >= 0.9, samtools >= 0.2.4.1, filepath,
+  build-depends:       base ==4.9.*, bytestring >= 0.9, samtools >= 0.2.4.1, filepath,
                        transformers, resourcet, conduit >= 1.1
   hs-source-dirs:      src, test  
