@@ -48,6 +48,7 @@ module Bio.SamTools.Bam (
   , closeOutHandle
   , withTamOutFile, withBamOutFile
   , put1
+  , cigars2, cigars3, querySeq2
   )
        where
 
@@ -70,6 +71,7 @@ import Bio.SeqLoc.Strand
 import Bio.SamTools.Cigar
 import Bio.SamTools.Internal
 import Bio.SamTools.LowLevel
+import Debug.Trace
 
 -- | 'Just' the reference target sequence ID in the target set, or
 -- 'Nothing' for an unmapped read
@@ -154,6 +156,14 @@ cigars b = Unsafe.unsafePerformIO $ withForeignPtr (ptrBam1 b) $ \p -> do
   liftM (map toCigar) $! peekArray nc . bam1Cigar $ p
 
 -- | Name of the query sequence
+cigars2 :: Bam1 -> Int -> [Cigar]
+cigars2 b nc = Unsafe.unsafePerformIO $ withForeignPtr (ptrBam1 b) $ \p -> do
+  liftM (map toCigar) $! peekArray nc . bam1Cigar $ p
+
+cigars3 :: Bam1 -> IO Int
+cigars3 b = Unsafe.unsafePerformIO $ withForeignPtr (ptrBam1 b) (return . getNCigar)
+
+-- | Name of the query sequence
 queryName :: Bam1 -> BS.ByteString
 queryName b = Unsafe.unsafePerformIO $ withForeignPtr (ptrBam1 b) (return . bam1QName)
 
@@ -168,10 +178,18 @@ queryLength b = Unsafe.unsafePerformIO $ withForeignPtr (ptrBam1 b) $ liftM from
 querySeq :: Bam1 -> Maybe BS.ByteString
 querySeq b = Unsafe.unsafePerformIO $ withForeignPtr (ptrBam1 b) $ \p -> 
   let seqarr = bam1Seq p
-      getQSeq l | l < 1 = return Nothing
+      getQSeq l | l < 0 = return $ Just $ BS.pack $ show l
                 | otherwise = return $! Just $! 
 	          fst (BS.unfoldrN (fromIntegral l) (\i -> if i==l then Nothing else Just (seqiToChar $ bam1Seqi seqarr $ i,i+1)) 0)
   in getLQSeq p >>= getQSeq
+
+querySeq2 :: Bam1 -> CInt -> Maybe BS.ByteString
+querySeq2 b c = Unsafe.unsafePerformIO $ withForeignPtr (ptrBam1 b) $ \p -> 
+  let seqarr = bam1Seq p
+      getQSeq l | l < 0 = return $ Just $ BS.pack $ show l
+                | otherwise = return $! Just $! 
+	          fst (BS.unfoldrN (fromIntegral l) (\i -> if i==l then Nothing else Just (seqiToChar $ bam1Seqi seqarr $ i,i+1)) 0)
+  in getQSeq c
      
 -- | 'Just' the query qualities, or 'Nothing' when it is
 -- unavailable. These are returned in ASCII format, i.e., /q/ + 33.
