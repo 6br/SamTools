@@ -17,13 +17,13 @@ Build-type:          Simple
 Cabal-version:       >=1.6
 
 Extra-source-files: cbits/samtools.c, include/samtools.h,
-                    samtools-0.1.19/bgzf.c, samtools-0.1.19/kstring.c, samtools-0.1.19/bam_aux.c, 
-                    samtools-0.1.19/bam.c, samtools-0.1.19/bam_import.c, samtools-0.1.19/sam.c,
-                    samtools-0.1.19/bam_index.c, samtools-0.1.19/bam_pileup.c, samtools-0.1.19/bam_lpileup.c,
-                    samtools-0.1.19/bam_md.c, samtools-0.1.19/razf.c,
-                    samtools-0.1.19/faidx.c, samtools-0.1.19/knetfile.c, samtools-0.1.19/bam_sort.c,
-                    samtools-0.1.19/sam_header.c, samtools-0.1.19/bam_reheader.c, samtools-0.1.19/kprobaln.c,
-                    samtools-0.1.19/errmod.c, samtools-0.1.19/kaln.c
+                    samtools-0.1.18/bgzf.c, samtools-0.1.18/kstring.c, samtools-0.1.18/bam_aux.c, 
+                    samtools-0.1.18/bam.c, samtools-0.1.18/bam_import.c, samtools-0.1.18/sam.c,
+                    samtools-0.1.18/bam_index.c, samtools-0.1.18/bam_pileup.c, samtools-0.1.18/bam_lpileup.c,
+                    samtools-0.1.18/bam_md.c, samtools-0.1.18/razf.c,
+                    samtools-0.1.18/faidx.c, samtools-0.1.18/knetfile.c, samtools-0.1.18/bam_sort.c,
+                    samtools-0.1.18/sam_header.c, samtools-0.1.18/bam_reheader.c, samtools-0.1.18/kprobaln.c,
+                    samtools-0.1.18/errmod.c, samtools-0.1.18/kaln.c
 
 Source-repository head
   type: git
@@ -41,22 +41,22 @@ Library
   Build-depends:       base >= 4.5 && < 5, bytestring, vector >= 0.7, seqloc >= 0.3.1
   Hs-Source-Dirs:      src
   Build-tools:         c2hs
-  Include-dirs:        samtools-0.1.19, include
+  Include-dirs:        samtools-0.1.18, include
   C-sources:           cbits/samtools.c, 
-                       samtools-0.1.19/bgzf.c, samtools-0.1.19/kstring.c, samtools-0.1.19/bam_aux.c, 
-                       samtools-0.1.19/bam.c, samtools-0.1.19/bam_import.c, samtools-0.1.19/sam.c,
-                       samtools-0.1.19/bam_index.c, samtools-0.1.19/bam_pileup.c, samtools-0.1.19/bam_lpileup.c,
-                       samtools-0.1.19/bam_md.c, samtools-0.1.19/razf.c,
-                       samtools-0.1.19/faidx.c, samtools-0.1.19/knetfile.c, samtools-0.1.19/bam_sort.c,
-                       samtools-0.1.19/sam_header.c, samtools-0.1.19/bam_reheader.c, samtools-0.1.19/kprobaln.c,
-                       samtools-0.1.19/errmod.c, samtools-0.1.19/kaln.c
+                       samtools-0.1.18/bgzf.c, samtools-0.1.18/kstring.c, samtools-0.1.18/bam_aux.c, 
+                       samtools-0.1.18/bam.c, samtools-0.1.18/bam_import.c, samtools-0.1.18/sam.c,
+                       samtools-0.1.18/bam_index.c, samtools-0.1.18/bam_pileup.c, samtools-0.1.18/bam_lpileup.c,
+                       samtools-0.1.18/bam_md.c, samtools-0.1.18/razf.c,
+                       samtools-0.1.18/faidx.c, samtools-0.1.18/knetfile.c, samtools-0.1.18/bam_sort.c,
+                       samtools-0.1.18/sam_header.c, samtools-0.1.18/bam_reheader.c, samtools-0.1.18/kprobaln.c,
+                       samtools-0.1.18/errmod.c, samtools-0.1.18/kaln.c
   Install-includes:    include/samtools.h,
-                       samtools-0.1.19/bam.h, samtools-0.1.19/bam_endian.h, samtools-0.1.19/faidx.h, 
-                       samtools-0.1.19/khash.h,
-                       samtools-0.1.19/kseq.h, samtools-0.1.19/ksort.h, samtools-0.1.19/kstring.h,
-                       samtools-0.1.19/razf.h, samtools-0.1.19/sam.h, samtools-0.1.19/sam_header.h,
-                       samtools-0.1.19/bgzf.h, samtools-0.1.19/knetfile.h, samtools-0.1.19/kaln.h,
-                       samtools-0.1.19/kprobaln.h, samtools-0.1.19/errmod.h
+                       samtools-0.1.18/bam.h, samtools-0.1.18/bam_endian.h, samtools-0.1.18/faidx.h, 
+                       samtools-0.1.18/khash.h,
+                       samtools-0.1.18/kseq.h, samtools-0.1.18/ksort.h, samtools-0.1.18/kstring.h,
+                       samtools-0.1.18/razf.h, samtools-0.1.18/sam.h, samtools-0.1.18/sam_header.h,
+                       samtools-0.1.18/bgzf.h, samtools-0.1.18/knetfile.h, samtools-0.1.18/kaln.h,
+                       samtools-0.1.18/kprobaln.h, samtools-0.1.18/errmod.h
   CC-options:          -g -D_FILE_OFFSET_BITS=64 -D_USE_KNETFILE
   Extra-libraries:     z
   Ghc-options:         -Wall
@@ -71,22 +71,22 @@ Executable samtest
   Build-depends:       base >= 4.5 && < 5, bytestring, vector >= 0.7, seqloc >= 0.3.1, process, filepath
   Hs-Source-Dirs:      src, test
   Build-tools:         c2hs
-  Include-dirs:        samtools-0.1.19, include
+  Include-dirs:        samtools-0.1.18, include
   C-sources:           cbits/samtools.c, 
-                       samtools-0.1.19/bgzf.c, samtools-0.1.19/kstring.c, samtools-0.1.19/bam_aux.c, 
-                       samtools-0.1.19/bam.c, samtools-0.1.19/bam_import.c, samtools-0.1.19/sam.c,
-                       samtools-0.1.19/bam_index.c, samtools-0.1.19/bam_pileup.c, samtools-0.1.19/bam_lpileup.c,
-                       samtools-0.1.19/bam_md.c, samtools-0.1.19/razf.c,
-                       samtools-0.1.19/faidx.c, samtools-0.1.19/knetfile.c, samtools-0.1.19/bam_sort.c,
-                       samtools-0.1.19/sam_header.c, samtools-0.1.19/bam_reheader.c, samtools-0.1.19/kprobaln.c,
-                       samtools-0.1.19/errmod.c, samtools-0.1.19/kaln.c
+                       samtools-0.1.18/bgzf.c, samtools-0.1.18/kstring.c, samtools-0.1.18/bam_aux.c, 
+                       samtools-0.1.18/bam.c, samtools-0.1.18/bam_import.c, samtools-0.1.18/sam.c,
+                       samtools-0.1.18/bam_index.c, samtools-0.1.18/bam_pileup.c, samtools-0.1.18/bam_lpileup.c,
+                       samtools-0.1.18/bam_md.c, samtools-0.1.18/razf.c,
+                       samtools-0.1.18/faidx.c, samtools-0.1.18/knetfile.c, samtools-0.1.18/bam_sort.c,
+                       samtools-0.1.18/sam_header.c, samtools-0.1.18/bam_reheader.c, samtools-0.1.18/kprobaln.c,
+                       samtools-0.1.18/errmod.c, samtools-0.1.18/kaln.c
   Install-includes:    include/samtools.h,
-                       samtools-0.1.19/bam.h, samtools-0.1.19/bam_endian.h, samtools-0.1.19/faidx.h, 
-                       samtools-0.1.19/khash.h,
-                       samtools-0.1.19/kseq.h, samtools-0.1.19/ksort.h, samtools-0.1.19/kstring.h,
-                       samtools-0.1.19/razf.h, samtools-0.1.19/sam.h, samtools-0.1.19/sam_header.h,
-                       samtools-0.1.19/bgzf.h, samtools-0.1.19/knetfile.h, samtools-0.1.19/kaln.h,
-                       samtools-0.1.19/kprobaln.h, samtools-0.1.19/errmod.h
+                       samtools-0.1.18/bam.h, samtools-0.1.18/bam_endian.h, samtools-0.1.18/faidx.h, 
+                       samtools-0.1.18/khash.h,
+                       samtools-0.1.18/kseq.h, samtools-0.1.18/ksort.h, samtools-0.1.18/kstring.h,
+                       samtools-0.1.18/razf.h, samtools-0.1.18/sam.h, samtools-0.1.18/sam_header.h,
+                       samtools-0.1.18/bgzf.h, samtools-0.1.18/knetfile.h, samtools-0.1.18/kaln.h,
+                       samtools-0.1.18/kprobaln.h, samtools-0.1.18/errmod.h
   CC-options:          -g -D_FILE_OFFSET_BITS=64 -D_USE_KNETFILE
   Extra-libraries:     z
   Ghc-options:         -Wall
